@@ -1,4 +1,11 @@
-import { g, config } from '@grafbase/sdk'
+import { g, config, connector } from '@grafbase/sdk'
+
+const neon = connector.Postgres('Neon', {
+  url: g.env('NEON_URL')
+})
+
+g.datasource(neon)
+
 
 
 const User = g.model('User', {
@@ -23,5 +30,5 @@ const Project = g.model('Project', {
 
 export default config({
   schema: g
-
 })
+
