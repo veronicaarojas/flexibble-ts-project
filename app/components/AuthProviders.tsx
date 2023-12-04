@@ -3,7 +3,7 @@
 import { getProviders, signIn } from 'next-auth/react'
 import { useState, useEffect } from "react"
 
-type Providers ={
+type Provider ={
   id: string;
   name: string;
   type: string;
@@ -13,11 +13,23 @@ type Providers ={
 
 }
 
+type Providers = Record<string, Provider> ;
+
 function AuthProviders() {
   const [ providers, setProviders ] = useState<Providers | null >(null);
-  return (
-    <div>AuthProviders</div>
-  )
+  
+  if (providers) {
+    return (
+      <div>
+        {Object.values(providers).map
+        ((provider: Provider, i) =>
+        (<button key={i} >
+          {provider.id}
+        </button>)
+        )}
+      </div>
+    )
+  }
 }
 
 export default AuthProviders
