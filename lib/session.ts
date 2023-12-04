@@ -27,10 +27,19 @@ export const authOptions: NextAuthOptions = {
   },
   callbacks: {
     async session({session}) {
-
+      return session;
     },
-    async signIn({ user }) {
+    async signIn({ user } : {user: AdapterUser | User}) {
+      try {
+        //get the user if they exist 
 
-    }
+        //if they do not exist, create one
+
+        return true 
+      } catch(error: any) {
+        console.log(error);
+        return false;
+      }
+    } 
   }
 }
