@@ -9,8 +9,8 @@ import { sign } from 'crypto'
 export const authOptions: NextAuthOptions = {
   providers: [
     GoogleProvider({
-      clientId: '',
-      clientSecret: ''
+      clientId: process.env.GOOGLE_CLIENT_ID!,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET!
     })
   ],
   jwt: {
@@ -30,7 +30,7 @@ export const authOptions: NextAuthOptions = {
 
     },
     async signIn({ user }) {
-      
+
     }
   }
 }
